@@ -37,51 +37,46 @@ static const struct adreno_info gpulist[] = {
 		.rev   = ADRENO_REV(3, 0, 5, ANY_ID),
 		.revn  = 305,
 		.name  = "A305",
-		.pm4fw = "a300_pm4.fw",
-		.pfpfw = "a300_pfp.fw",
+		.pm4fw = "/*(DEBLOBBED)*/",
+		.pfpfw = "/*(DEBLOBBED)*/",
 		.gmem  = SZ_256K,
 		.init  = a3xx_gpu_init,
 	}, {
 		.rev   = ADRENO_REV(3, 0, 6, 0),
 		.revn  = 307,        /* because a305c is revn==306 */
 		.name  = "A306",
-		.pm4fw = "a300_pm4.fw",
-		.pfpfw = "a300_pfp.fw",
+		.pm4fw = "/*(DEBLOBBED)*/",
+		.pfpfw = "/*(DEBLOBBED)*/",
 		.gmem  = SZ_128K,
 		.init  = a3xx_gpu_init,
 	}, {
 		.rev   = ADRENO_REV(3, 2, ANY_ID, ANY_ID),
 		.revn  = 320,
 		.name  = "A320",
-		.pm4fw = "a300_pm4.fw",
-		.pfpfw = "a300_pfp.fw",
+		.pm4fw = "/*(DEBLOBBED)*/",
+		.pfpfw = "/*(DEBLOBBED)*/",
 		.gmem  = SZ_512K,
 		.init  = a3xx_gpu_init,
 	}, {
 		.rev   = ADRENO_REV(3, 3, 0, ANY_ID),
 		.revn  = 330,
 		.name  = "A330",
-		.pm4fw = "a330_pm4.fw",
-		.pfpfw = "a330_pfp.fw",
+		.pm4fw = "/*(DEBLOBBED)*/",
+		.pfpfw = "/*(DEBLOBBED)*/",
 		.gmem  = SZ_1M,
 		.init  = a3xx_gpu_init,
 	}, {
 		.rev   = ADRENO_REV(4, 2, 0, ANY_ID),
 		.revn  = 420,
 		.name  = "A420",
-		.pm4fw = "a420_pm4.fw",
-		.pfpfw = "a420_pfp.fw",
+		.pm4fw = "/*(DEBLOBBED)*/",
+		.pfpfw = "/*(DEBLOBBED)*/",
 		.gmem  = (SZ_1M + SZ_512K),
 		.init  = a4xx_gpu_init,
 	},
 };
 
-MODULE_FIRMWARE("a300_pm4.fw");
-MODULE_FIRMWARE("a300_pfp.fw");
-MODULE_FIRMWARE("a330_pm4.fw");
-MODULE_FIRMWARE("a330_pfp.fw");
-MODULE_FIRMWARE("a420_pm4.fw");
-MODULE_FIRMWARE("a420_pfp.fw");
+/*(DEBLOBBED)*/
 
 static inline bool _rev_match(uint8_t entry, uint8_t id)
 {

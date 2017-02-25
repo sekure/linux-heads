@@ -1061,24 +1061,21 @@ static int stir421x_fw_upload(struct irda_usb_cb *self,
 /*
  * Function stir421x_patch_device(struct irda_usb_cb *self)
  *
- * Get a firmware code from userspase using hotplug request_firmware() call
+ * Get a firmware code from userspase using hotplug reject_firmware() call
   */
 static int stir421x_patch_device(struct irda_usb_cb *self)
 {
 	unsigned int i;
 	int ret;
-	char stir421x_fw_name[12];
+	char stir421x_fw_name[16];
 	const struct firmware *fw;
 	const unsigned char *fw_version_ptr; /* pointer to version string */
 	unsigned long fw_version = 0;
 
-        /*
-         * Known firmware patch file names for STIR421x dongles
-         * are "42101001.sb" or "42101002.sb"
-         */
-        sprintf(stir421x_fw_name, "4210%4X.sb",
+        /*(DEBLOBBED)*/
+        sprintf(stir421x_fw_name, "/*(DEBLOBBED)*/",
                 self->usbdev->descriptor.bcdDevice);
-        ret = request_firmware(&fw, stir421x_fw_name, &self->usbdev->dev);
+        ret = reject_firmware(&fw, stir421x_fw_name, &self->usbdev->dev);
         if (ret < 0)
                 return ret;
 

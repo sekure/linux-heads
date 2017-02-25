@@ -139,7 +139,7 @@ static int rsi_load_ta_instructions(struct rsi_common *common)
 	u32 num_blocks, len;
 	int status = 0;
 
-	status = request_firmware(&fw_entry, FIRMWARE_RSI9113, adapter->device);
+	status = reject_firmware(&fw_entry, FIRMWARE_RSI9113, adapter->device);
 	if (status < 0) {
 		rsi_dbg(ERR_ZONE, "%s Firmware file %s not found\n",
 			__func__, FIRMWARE_RSI9113);

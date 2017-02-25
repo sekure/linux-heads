@@ -40,7 +40,7 @@
 
 DVB_DEFINE_MOD_OPT_ADAPTER_NR(adapter_nr);
 
-#define FWFILE "dvb-cx18-mpc718-mt352.fw"
+#define FWFILE "/*(DEBLOBBED)*/"
 
 #define CX18_REG_DMUX_NUM_PORT_0_CONTROL 0xd5a000
 #define CX18_CLOCK_ENABLE2		 0xc71024
@@ -140,7 +140,7 @@ static int yuan_mpc718_mt352_reqfw(struct cx18_stream *stream,
 	const char *fn = FWFILE;
 	int ret;
 
-	ret = request_firmware(fw, fn, &cx->pci_dev->dev);
+	ret = reject_firmware(fw, fn, &cx->pci_dev->dev);
 	if (ret)
 		CX18_ERR("Unable to open firmware file %s\n", fn);
 	else {
@@ -507,7 +507,7 @@ static int dvb_register(struct cx18_stream *stream)
 				.ctrl = NULL,
 			};
 			static struct xc2028_ctrl ctrl = {
-				.fname   = XC2028_DEFAULT_FIRMWARE,
+				.fname   = "/*(DEBLOBBED)*/",
 				.max_len = 64,
 				.demod   = XC3028_FE_ZARLINK456,
 				.type    = XC2028_AUTO,
@@ -539,7 +539,7 @@ static int dvb_register(struct cx18_stream *stream)
 				.ctrl = NULL,
 			};
 			static struct xc2028_ctrl ctrl = {
-				.fname   = XC2028_DEFAULT_FIRMWARE,
+				.fname   = "/*(DEBLOBBED)*/",
 				.max_len = 64,
 				.demod   = XC3028_FE_ZARLINK456,
 				.type    = XC2028_AUTO,
@@ -562,7 +562,7 @@ static int dvb_register(struct cx18_stream *stream)
 				.ctrl = NULL,
 			};
 			static struct xc2028_ctrl ctrl = {
-				.fname   = XC2028_DEFAULT_FIRMWARE,
+				.fname   = "/*(DEBLOBBED)*/",
 				.max_len = 64,
 				.demod   = XC3028_FE_ZARLINK456,
 				.type    = XC2028_AUTO,
@@ -606,4 +606,4 @@ static int dvb_register(struct cx18_stream *stream)
 	return ret;
 }
 
-MODULE_FIRMWARE(FWFILE);
+/*(DEBLOBBED)*/

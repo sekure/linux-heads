@@ -1663,8 +1663,8 @@ gf100_gr_ctor_fw(struct gf100_gr *gr, const char *fwname,
 		cname[i] = tolower(cname[i]);
 	}
 
-	snprintf(f, sizeof(f), "nvidia/%s/%s.bin", cname, fwname);
-	ret = request_firmware(&fw, f, device->dev);
+	snprintf(f, sizeof(f), "/*(DEBLOBBED)*/", cname, fwname);
+	ret = reject_firmware(&fw, f, device->dev);
 	if (ret) {
 		nvkm_error(subdev, "failed to load %s\n", fwname);
 		return ret;

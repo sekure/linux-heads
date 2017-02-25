@@ -15,7 +15,7 @@
 #define SPROC_MAX_NOTIFY_ID 14
 #define SPROC_RESOURCE_NAME "rsc-table"
 #define SPROC_MODEM_NAME "ste-modem"
-#define SPROC_MODEM_FIRMWARE SPROC_MODEM_NAME "-fw.bin"
+/*(DEBLOBBED)*/
 
 #define sproc_dbg(sproc, fmt, ...) \
 	dev_dbg(&sproc->mdev->pdev.dev, fmt, ##__VA_ARGS__)
@@ -282,7 +282,7 @@ static int sproc_probe(struct platform_device *pdev)
 	}
 
 	rproc = rproc_alloc(&mdev->pdev.dev, mdev->pdev.name, &sproc_ops,
-			    SPROC_MODEM_FIRMWARE, sizeof(*sproc));
+			    "/*(DEBLOBBED)*/", sizeof(*sproc));
 	if (!rproc)
 		return -ENOMEM;
 

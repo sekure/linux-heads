@@ -40,7 +40,7 @@
  * ini parameters between them are different.  The driver validates
  * the correct NVS size in wl1271_boot_upload_nvs().
  */
-#define WL12XX_NVS_NAME "ti-connectivity/wl1271-nvs.bin"
+#define WL12XX_NVS_NAME "/*(DEBLOBBED)*/"
 
 #define WL1271_TX_SECURITY_LO16(s) ((u16)((s) & 0xffff))
 #define WL1271_TX_SECURITY_HI32(s) ((u32)(((s) >> 16) & 0xffffffff))

@@ -29,7 +29,7 @@
 #include "af9013.h"
 #include <linux/firmware.h>
 
-#define AF9013_FIRMWARE "dvb-fe-af9013.fw"
+#define AF9013_FIRMWARE "/*(DEBLOBBED)*/"
 
 struct af9013_reg_bit {
 	u16 addr;

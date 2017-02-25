@@ -77,7 +77,7 @@ static int skl_load_base_firmware(struct sst_dsp *ctx)
 	init_waitqueue_head(&skl->boot_wait);
 
 	if (ctx->fw == NULL) {
-		ret = request_firmware(&ctx->fw, "dsp_fw_release.bin", ctx->dev);
+		ret = reject_firmware(&ctx->fw, "/*(DEBLOBBED)*/", ctx->dev);
 		if (ret < 0) {
 			dev_err(ctx->dev, "Request firmware failed %d\n", ret);
 			skl_dsp_disable_core(ctx);

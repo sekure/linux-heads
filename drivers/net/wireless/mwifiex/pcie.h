@@ -28,9 +28,9 @@
 
 #include    "main.h"
 
-#define PCIE8766_DEFAULT_FW_NAME "mrvl/pcie8766_uapsta.bin"
-#define PCIE8897_DEFAULT_FW_NAME "mrvl/pcie8897_uapsta.bin"
-#define PCIE8997_DEFAULT_FW_NAME "mrvl/pcie8997_uapsta.bin"
+#define PCIE8766_DEFAULT_FW_NAME "/*(DEBLOBBED)*/"
+#define PCIE8897_DEFAULT_FW_NAME "/*(DEBLOBBED)*/"
+#define PCIE8997_DEFAULT_FW_NAME "/*(DEBLOBBED)*/"
 
 #define PCIE_VENDOR_ID_MARVELL              (0x11ab)
 #define PCIE_DEVICE_ID_MARVELL_88W8766P		(0x2b30)

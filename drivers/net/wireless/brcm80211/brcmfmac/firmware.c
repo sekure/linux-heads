@@ -481,7 +481,7 @@ static void brcmf_fw_request_code_done(const struct firmware *fw, void *ctx)
 		return;
 	}
 	fwctx->code = fw;
-	ret = request_firmware_nowait(THIS_MODULE, true, fwctx->nvram_name,
+	ret = reject_firmware_nowait(THIS_MODULE, true, fwctx->nvram_name,
 				      fwctx->dev, GFP_KERNEL, fwctx,
 				      brcmf_fw_request_nvram_done);
 
@@ -525,7 +525,7 @@ int brcmf_fw_get_firmwares_pcie(struct device *dev, u16 flags,
 	fwctx->domain_nr = domain_nr;
 	fwctx->bus_nr = bus_nr;
 
-	return request_firmware_nowait(THIS_MODULE, true, code, dev,
+	return reject_firmware_nowait(THIS_MODULE, true, code, dev,
 				       GFP_KERNEL, fwctx,
 				       brcmf_fw_request_code_done);
 }

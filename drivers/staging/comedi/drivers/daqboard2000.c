@@ -110,7 +110,7 @@
 
 #include "8255.h"
 
-#define DAQBOARD2000_FIRMWARE		"daqboard2000_firmware.bin"
+#define DAQBOARD2000_FIRMWARE		"/*(DEBLOBBED)*/"
 
 #define DAQBOARD2000_SUBSYSTEM_IDS2	0x0002	/* Daqboard/2000 - 2 Dacs */
 #define DAQBOARD2000_SUBSYSTEM_IDS4	0x0004	/* Daqboard/2000 - 4 Dacs */
@@ -757,4 +757,4 @@ module_comedi_pci_driver(daqboard2000_driver, daqboard2000_pci_driver);
 MODULE_AUTHOR("Comedi http://www.comedi.org");
 MODULE_DESCRIPTION("Comedi low-level driver");
 MODULE_LICENSE("GPL");
-MODULE_FIRMWARE(DAQBOARD2000_FIRMWARE);
+/*(DEBLOBBED)*/

@@ -289,7 +289,7 @@ static int rome_download_firmware(struct hci_dev *hdev,
 
 	BT_INFO("%s: ROME Downloading %s", hdev->name, config->fwname);
 
-	ret = request_firmware(&fw, config->fwname, &hdev->dev);
+	ret = reject_firmware(&fw, config->fwname, &hdev->dev);
 	if (ret) {
 		BT_ERR("%s: Failed to request file: %s (%d)", hdev->name,
 		       config->fwname, ret);
@@ -355,7 +355,7 @@ int qca_uart_setup_rome(struct hci_dev *hdev, uint8_t baudrate)
 
 	/* Download rampatch file */
 	config.type = TLV_TYPE_PATCH;
-	snprintf(config.fwname, sizeof(config.fwname), "qca/rampatch_%08x.bin",
+	snprintf(config.fwname, sizeof(config.fwname), "/*(DEBLOBBED)*/",
 		 rome_ver);
 	err = rome_download_firmware(hdev, &config);
 	if (err < 0) {
@@ -365,7 +365,7 @@ int qca_uart_setup_rome(struct hci_dev *hdev, uint8_t baudrate)
 
 	/* Download NVM configuration */
 	config.type = TLV_TYPE_NVM;
-	snprintf(config.fwname, sizeof(config.fwname), "qca/nvm_%08x.bin",
+	snprintf(config.fwname, sizeof(config.fwname), "/*(DEBLOBBED)*/",
 		 rome_ver);
 	err = rome_download_firmware(hdev, &config);
 	if (err < 0) {

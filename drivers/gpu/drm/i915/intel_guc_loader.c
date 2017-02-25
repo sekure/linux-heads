@@ -59,8 +59,8 @@
  *
  */
 
-#define I915_SKL_GUC_UCODE "i915/skl_guc_ver4.bin"
-MODULE_FIRMWARE(I915_SKL_GUC_UCODE);
+#define I915_SKL_GUC_UCODE "/*(DEBLOBBED)*/"
+/*(DEBLOBBED)*/
 
 /* User-friendly representation of an enum */
 const char *intel_guc_fw_status_repr(enum intel_guc_fw_status status)
@@ -466,7 +466,7 @@ static void guc_fw_fetch(struct drm_device *dev, struct intel_guc_fw *guc_fw)
 	DRM_DEBUG_DRIVER("before requesting firmware: GuC fw fetch status %s\n",
 		intel_guc_fw_status_repr(guc_fw->guc_fw_fetch_status));
 
-	err = request_firmware(&fw, guc_fw->guc_fw_path, &dev->pdev->dev);
+	err = reject_firmware(&fw, guc_fw->guc_fw_path, &dev->pdev->dev);
 	if (err)
 		goto fail;
 	if (!fw)

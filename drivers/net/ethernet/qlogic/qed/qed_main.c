@@ -43,7 +43,7 @@ MODULE_VERSION(DRV_MODULE_VERSION);
 	__stringify(FW_ENGINEERING_VERSION)
 
 #define QED_FW_FILE_NAME	\
-	"qed/qed_init_values_zipped-" FW_FILE_VERSION ".bin"
+	"/*(DEBLOBBED)*/"
 
 static int __init qed_init(void)
 {
@@ -733,7 +733,7 @@ static int qed_slowpath_start(struct qed_dev *cdev,
 	struct qed_hwfn *hwfn;
 	int rc;
 
-	rc = request_firmware(&cdev->firmware, QED_FW_FILE_NAME,
+	rc = reject_firmware(&cdev->firmware, QED_FW_FILE_NAME,
 			      &cdev->pdev->dev);
 	if (rc) {
 		DP_NOTICE(cdev,

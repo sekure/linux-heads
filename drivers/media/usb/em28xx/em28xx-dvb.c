@@ -397,7 +397,7 @@ static struct drxk_config terratec_h5_drxk = {
 	.adr = 0x29,
 	.single_master = 1,
 	.no_i2c_bridge = 1,
-	.microcode_name = "dvb-usb-terratec-h5-drxk.fw",
+	.microcode_name = "/*(DEBLOBBED)*/",
 	.qam_demod_parameter_count = 2,
 };
 
@@ -405,7 +405,7 @@ static struct drxk_config hauppauge_930c_drxk = {
 	.adr = 0x29,
 	.single_master = 1,
 	.no_i2c_bridge = 1,
-	.microcode_name = "dvb-usb-hauppauge-hvr930c-drxk.fw",
+	.microcode_name = "/*(DEBLOBBED)*/",
 	.chunk_size = 56,
 	.qam_demod_parameter_count = 2,
 };
@@ -414,7 +414,7 @@ static struct drxk_config terratec_htc_stick_drxk = {
 	.adr = 0x29,
 	.single_master = 1,
 	.no_i2c_bridge = 1,
-	.microcode_name = "dvb-usb-terratec-htc-stick-drxk.fw",
+	.microcode_name = "/*(DEBLOBBED)*/",
 	.chunk_size = 54,
 	.qam_demod_parameter_count = 2,
 	/* Required for the antenna_gpio to disable LNA. */
@@ -427,7 +427,7 @@ static struct drxk_config maxmedia_ub425_tc_drxk = {
 	.adr = 0x29,
 	.single_master = 1,
 	.no_i2c_bridge = 1,
-	.microcode_name = "dvb-demod-drxk-01.fw",
+	.microcode_name = "/*(DEBLOBBED)*/",
 	.chunk_size = 62,
 	.qam_demod_parameter_count = 2,
 };
@@ -435,7 +435,7 @@ static struct drxk_config maxmedia_ub425_tc_drxk = {
 static struct drxk_config pctv_520e_drxk = {
 	.adr = 0x29,
 	.single_master = 1,
-	.microcode_name = "dvb-demod-drxk-pctv.fw",
+	.microcode_name = "/*(DEBLOBBED)*/",
 	.qam_demod_parameter_count = 2,
 	.chunk_size = 58,
 	.antenna_dvbt = true, /* disable LNA */

@@ -21,7 +21,7 @@
 
 #define EVENT_WAIT_FOREVER              0
 #define TA_LOAD_ADDRESS                 0x00
-#define FIRMWARE_RSI9113                "rsi_91x.fw"
+#define FIRMWARE_RSI9113                "/*(DEBLOBBED)*/"
 #define QUEUE_NOT_FULL                  1
 #define QUEUE_FULL                      0
 

@@ -103,10 +103,7 @@
 MODULE_AUTHOR("Michael Zappe <zapman@interlan.net>, Stephane Alnet <stephane@u-picardie.fr>, Brad Hards <bhards@bigpond.net.au> and Oliver Neukum <oliver@neukum.org>");
 MODULE_DESCRIPTION("KL5USB101 USB Ethernet driver");
 MODULE_LICENSE("GPL");
-MODULE_FIRMWARE("kaweth/new_code.bin");
-MODULE_FIRMWARE("kaweth/new_code_fix.bin");
-MODULE_FIRMWARE("kaweth/trigger_code.bin");
-MODULE_FIRMWARE("kaweth/trigger_code_fix.bin");
+/*(DEBLOBBED)*/
 
 static const char driver_name[] = "kaweth";
 
@@ -395,7 +392,7 @@ static int kaweth_download_firmware(struct kaweth_device *kaweth,
 	int data_len;
 	int ret;
 
-	ret = request_firmware(&fw, fwname, &kaweth->dev->dev);
+	ret = reject_firmware(&fw, fwname, &kaweth->dev->dev);
 	if (ret) {
 		dev_err(&kaweth->intf->dev, "Firmware request failed\n");
 		return ret;
@@ -1049,7 +1046,7 @@ static int kaweth_probe(
 		dev_info(dev, "Downloading firmware...\n");
 		kaweth->firmware_buf = (__u8 *)__get_free_page(GFP_KERNEL);
 		if ((result = kaweth_download_firmware(kaweth,
-						      "kaweth/new_code.bin",
+						      "/*(DEBLOBBED)*/",
 						      100,
 						      2)) < 0) {
 			dev_err(dev, "Error downloading firmware (%d)\n",
@@ -1058,7 +1055,7 @@ static int kaweth_probe(
 		}
 
 		if ((result = kaweth_download_firmware(kaweth,
-						      "kaweth/new_code_fix.bin",
+						      "/*(DEBLOBBED)*/",
 						      100,
 						      3)) < 0) {
 			dev_err(dev, "Error downloading firmware fix (%d)\n",
@@ -1067,7 +1064,7 @@ static int kaweth_probe(
 		}
 
 		if ((result = kaweth_download_firmware(kaweth,
-						      "kaweth/trigger_code.bin",
+						      "/*(DEBLOBBED)*/",
 						      126,
 						      2)) < 0) {
 			dev_err(dev, "Error downloading trigger code (%d)\n",
@@ -1077,7 +1074,7 @@ static int kaweth_probe(
 		}
 
 		if ((result = kaweth_download_firmware(kaweth,
-						      "kaweth/trigger_code_fix.bin",
+						      "/*(DEBLOBBED)*/",
 						      126,
 						      3)) < 0) {
 			dev_err(dev, "Error downloading trigger code fix (%d)\n", result);

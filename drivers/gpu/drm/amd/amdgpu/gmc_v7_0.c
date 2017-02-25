@@ -40,9 +40,7 @@
 static void gmc_v7_0_set_gart_funcs(struct amdgpu_device *adev);
 static void gmc_v7_0_set_irq_funcs(struct amdgpu_device *adev);
 
-MODULE_FIRMWARE("radeon/bonaire_mc.bin");
-MODULE_FIRMWARE("radeon/hawaii_mc.bin");
-MODULE_FIRMWARE("amdgpu/topaz_mc.bin");
+/*(DEBLOBBED)*/
 
 static const u32 golden_settings_iceland_a11[] =
 {
@@ -173,11 +171,11 @@ static int gmc_v7_0_init_microcode(struct amdgpu_device *adev)
 	}
 
 	if (adev->asic_type == CHIP_TOPAZ)
-		snprintf(fw_name, sizeof(fw_name), "amdgpu/%s_mc.bin", chip_name);
+		snprintf(fw_name, sizeof(fw_name), "/*(DEBLOBBED)*/", chip_name);
 	else
-		snprintf(fw_name, sizeof(fw_name), "radeon/%s_mc.bin", chip_name);
+		snprintf(fw_name, sizeof(fw_name), "/*(DEBLOBBED)*/", chip_name);
 
-	err = request_firmware(&adev->mc.fw, fw_name, adev->dev);
+	err = reject_firmware(&adev->mc.fw, fw_name, adev->dev);
 	if (err)
 		goto out;
 	err = amdgpu_ucode_validate(adev->mc.fw);

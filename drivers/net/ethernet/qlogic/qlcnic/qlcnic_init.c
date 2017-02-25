@@ -1286,7 +1286,7 @@ next:
 	if (adapter->ahw->fw_type == QLCNIC_FLASH_ROMIMAGE) {
 		adapter->fw = NULL;
 	} else {
-		rc = request_firmware(&adapter->fw,
+		rc = reject_firmware(&adapter->fw,
 				      fw_name[adapter->ahw->fw_type],
 				      &pdev->dev);
 		if (rc != 0)

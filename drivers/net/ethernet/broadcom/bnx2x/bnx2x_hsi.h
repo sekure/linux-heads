@@ -3012,11 +3012,7 @@ struct afex_stats {
 	u32 rx_frames_dropped_lo;
 };
 
-#define BCM_5710_FW_MAJOR_VERSION			7
-#define BCM_5710_FW_MINOR_VERSION			12
-#define BCM_5710_FW_REVISION_VERSION		30
-#define BCM_5710_FW_ENGINEERING_VERSION		0
-#define BCM_5710_FW_COMPILE_FLAGS			1
+/*(DEBLOBBED)*/
 
 
 /*

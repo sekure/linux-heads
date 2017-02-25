@@ -338,7 +338,7 @@ static const struct firmware *ath10k_fetch_fw_file(struct ath10k *ar,
 		dir = ".";
 
 	snprintf(filename, sizeof(filename), "%s/%s", dir, file);
-	ret = request_firmware(&fw, filename, ar->dev);
+	ret = reject_firmware(&fw, filename, ar->dev);
 	if (ret)
 		return ERR_PTR(ret);
 
@@ -689,8 +689,8 @@ static int ath10k_fetch_cal_file(struct ath10k *ar)
 {
 	char filename[100];
 
-	/* cal-<bus>-<id>.bin */
-	scnprintf(filename, sizeof(filename), "cal-%s-%s.bin",
+	/*(DEBLOBBED)*/
+	scnprintf(filename, sizeof(filename), "/*(DEBLOBBED)*/",
 		  ath10k_bus_str(ar->hif.bus), dev_name(ar->dev));
 
 	ar->cal_file = ath10k_fetch_fw_file(ar, ATH10K_FW_DIR, filename);

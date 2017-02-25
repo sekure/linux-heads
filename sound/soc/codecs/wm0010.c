@@ -360,7 +360,7 @@ static int wm0010_firmware_load(const char *name, struct snd_soc_codec *codec)
 
 	INIT_LIST_HEAD(&xfer_list);
 
-	ret = request_firmware(&fw, name, codec->dev);
+	ret = reject_firmware(&fw, name, codec->dev);
 	if (ret != 0) {
 		dev_err(codec->dev, "Failed to request application(%s): %d\n",
 			name, ret);
@@ -509,7 +509,7 @@ static int wm0010_stage2_load(struct snd_soc_codec *codec)
 	int i;
 	int ret = 0;
 
-	ret = request_firmware(&fw, "wm0010_stage2.bin", codec->dev);
+	ret = reject_firmware(&fw, "/*(DEBLOBBED)*/", codec->dev);
 	if (ret != 0) {
 		dev_err(codec->dev, "Failed to request stage2 loader: %d\n",
 			ret);
@@ -708,7 +708,7 @@ static int wm0010_boot(struct snd_soc_codec *codec)
 	} else
 		dev_dbg(codec->dev, "Not enabling DSP PLL.");
 
-	ret = wm0010_firmware_load("wm0010.dfw", codec);
+	ret = wm0010_firmware_load("/*(DEBLOBBED)*/", codec);
 
 	if (ret != 0)
 		goto abort;

@@ -43,10 +43,10 @@
 #define BRCMF_USB_CBCTL_READ		1
 #define BRCMF_USB_MAX_PKT_SIZE		1600
 
-#define BRCMF_USB_43143_FW_NAME		"brcm/brcmfmac43143.bin"
-#define BRCMF_USB_43236_FW_NAME		"brcm/brcmfmac43236b.bin"
-#define BRCMF_USB_43242_FW_NAME		"brcm/brcmfmac43242a.bin"
-#define BRCMF_USB_43569_FW_NAME		"brcm/brcmfmac43569.bin"
+#define BRCMF_USB_43143_FW_NAME		"/*(DEBLOBBED)*/"
+#define BRCMF_USB_43236_FW_NAME		"/*(DEBLOBBED)*/"
+#define BRCMF_USB_43242_FW_NAME		"/*(DEBLOBBED)*/"
+#define BRCMF_USB_43569_FW_NAME		"/*(DEBLOBBED)*/"
 
 #define TRX_MAGIC		0x30524448	/* "HDR0" */
 #define TRX_MAX_OFFSET		3		/* Max number of file offsets */
@@ -1491,10 +1491,7 @@ static struct usb_device_id brcmf_usb_devid_table[] = {
 };
 
 MODULE_DEVICE_TABLE(usb, brcmf_usb_devid_table);
-MODULE_FIRMWARE(BRCMF_USB_43143_FW_NAME);
-MODULE_FIRMWARE(BRCMF_USB_43236_FW_NAME);
-MODULE_FIRMWARE(BRCMF_USB_43242_FW_NAME);
-MODULE_FIRMWARE(BRCMF_USB_43569_FW_NAME);
+/*(DEBLOBBED)*/
 
 static struct usb_driver brcmf_usbdrvr = {
 	.name = KBUILD_MODNAME,

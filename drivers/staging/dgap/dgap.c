@@ -170,21 +170,21 @@ struct firmware_info {
  * Firmware - BIOS, FEP, and CONC filenames
  */
 static struct firmware_info fw_info[] = {
-	{ "dgap/dgap.conf", "dgap/sxbios.bin",  "dgap/sxfep.bin",  NULL, 0 },
-	{ "dgap/dgap.conf", "dgap/cxpbios.bin", "dgap/cxpfep.bin", NULL, 1 },
-	{ "dgap/dgap.conf", "dgap/cxpbios.bin", "dgap/cxpfep.bin", NULL, 2 },
-	{ "dgap/dgap.conf", "dgap/pcibios.bin", "dgap/pcifep.bin", NULL, 3 },
-	{ "dgap/dgap.conf", "dgap/xrbios.bin",  "dgap/xrfep.bin",  NULL, 4 },
-	{ "dgap/dgap.conf", "dgap/xrbios.bin",  "dgap/xrfep.bin",  NULL, 5 },
-	{ "dgap/dgap.conf", "dgap/xrbios.bin",  "dgap/xrfep.bin",  NULL, 6 },
-	{ "dgap/dgap.conf", "dgap/xrbios.bin",  "dgap/xrfep.bin",  NULL, 7 },
-	{ "dgap/dgap.conf", "dgap/xrbios.bin",  "dgap/xrfep.bin",  NULL, 8 },
-	{ "dgap/dgap.conf", "dgap/xrbios.bin",  "dgap/xrfep.bin",  NULL, 9 },
-	{ "dgap/dgap.conf", "dgap/xrbios.bin",  "dgap/xrfep.bin",  NULL, 10 },
-	{ "dgap/dgap.conf", "dgap/xrbios.bin",  "dgap/xrfep.bin",  NULL, 11 },
-	{ "dgap/dgap.conf", "dgap/xrbios.bin",  "dgap/xrfep.bin",  NULL, 12 },
-	{ "dgap/dgap.conf", "dgap/xrbios.bin",  "dgap/xrfep.bin",  NULL, 13 },
-	{ "dgap/dgap.conf", "dgap/sxbios.bin",  "dgap/sxfep.bin",  NULL, 14 },
+	{ "dgap/dgap.conf", "/*(DEBLOBBED)*/",  "/*(DEBLOBBED)*/",  NULL, 0 },
+	{ "dgap/dgap.conf", "/*(DEBLOBBED)*/", "/*(DEBLOBBED)*/", NULL, 1 },
+	{ "dgap/dgap.conf", "/*(DEBLOBBED)*/", "/*(DEBLOBBED)*/", NULL, 2 },
+	{ "dgap/dgap.conf", "/*(DEBLOBBED)*/", "/*(DEBLOBBED)*/", NULL, 3 },
+	{ "dgap/dgap.conf", "/*(DEBLOBBED)*/",  "/*(DEBLOBBED)*/",  NULL, 4 },
+	{ "dgap/dgap.conf", "/*(DEBLOBBED)*/",  "/*(DEBLOBBED)*/",  NULL, 5 },
+	{ "dgap/dgap.conf", "/*(DEBLOBBED)*/",  "/*(DEBLOBBED)*/",  NULL, 6 },
+	{ "dgap/dgap.conf", "/*(DEBLOBBED)*/",  "/*(DEBLOBBED)*/",  NULL, 7 },
+	{ "dgap/dgap.conf", "/*(DEBLOBBED)*/",  "/*(DEBLOBBED)*/",  NULL, 8 },
+	{ "dgap/dgap.conf", "/*(DEBLOBBED)*/",  "/*(DEBLOBBED)*/",  NULL, 9 },
+	{ "dgap/dgap.conf", "/*(DEBLOBBED)*/",  "/*(DEBLOBBED)*/",  NULL, 10 },
+	{ "dgap/dgap.conf", "/*(DEBLOBBED)*/",  "/*(DEBLOBBED)*/",  NULL, 11 },
+	{ "dgap/dgap.conf", "/*(DEBLOBBED)*/",  "/*(DEBLOBBED)*/",  NULL, 12 },
+	{ "dgap/dgap.conf", "/*(DEBLOBBED)*/",  "/*(DEBLOBBED)*/",  NULL, 13 },
+	{ "dgap/dgap.conf", "/*(DEBLOBBED)*/",  "/*(DEBLOBBED)*/",  NULL, 14 },
 	{NULL,}
 };
 
@@ -6529,7 +6529,7 @@ static int dgap_firmware_load(struct pci_dev *pdev, int card_type,
 	dgap_do_reset_board(brd);
 
 	if (fw_info[card_type].conf_name) {
-		ret = request_firmware(&fw, fw_info[card_type].conf_name,
+		ret = reject_firmware(&fw, fw_info[card_type].conf_name,
 				       &pdev->dev);
 		if (ret) {
 			dev_err(&pdev->dev, "config file %s not found\n",
@@ -6582,7 +6582,7 @@ static int dgap_firmware_load(struct pci_dev *pdev, int card_type,
 	}
 
 	if (fw_info[card_type].bios_name) {
-		ret = request_firmware(&fw, fw_info[card_type].bios_name,
+		ret = reject_firmware(&fw, fw_info[card_type].bios_name,
 				       &pdev->dev);
 		if (ret) {
 			dev_err(&pdev->dev, "bios file %s not found\n",
@@ -6599,7 +6599,7 @@ static int dgap_firmware_load(struct pci_dev *pdev, int card_type,
 	}
 
 	if (fw_info[card_type].fep_name) {
-		ret = request_firmware(&fw, fw_info[card_type].fep_name,
+		ret = reject_firmware(&fw, fw_info[card_type].fep_name,
 				       &pdev->dev);
 		if (ret) {
 			dev_err(&pdev->dev, "dgap: fep file %s not found\n",
@@ -6628,7 +6628,7 @@ static int dgap_firmware_load(struct pci_dev *pdev, int card_type,
 	}
 
 	if (fw_info[card_type].con_name && check && vaddr) {
-		ret = request_firmware(&fw, fw_info[card_type].con_name,
+		ret = reject_firmware(&fw, fw_info[card_type].con_name,
 				       &pdev->dev);
 		if (ret) {
 			dev_err(&pdev->dev, "conc file %s not found\n",

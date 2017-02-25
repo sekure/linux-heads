@@ -60,8 +60,7 @@ MODULE_AUTHOR("Stefano Brivio");
 MODULE_AUTHOR("Michael Buesch");
 MODULE_LICENSE("GPL");
 
-MODULE_FIRMWARE("b43legacy/ucode2.fw");
-MODULE_FIRMWARE("b43legacy/ucode4.fw");
+/*(DEBLOBBED)*/
 
 #if defined(CONFIG_B43LEGACY_DMA) && defined(CONFIG_B43LEGACY_PIO)
 static int modparam_pio;
@@ -1508,9 +1507,7 @@ static void b43legacy_release_firmware(struct b43legacy_wldev *dev)
 
 static void b43legacy_print_fw_helptext(struct b43legacy_wl *wl)
 {
-	b43legacyerr(wl, "You must go to http://wireless.kernel.org/en/users/"
-		     "Drivers/b43#devicefirmware "
-		     "and download the correct firmware (version 3).\n");
+	/*(DEBLOBBED)*/
 }
 
 static void b43legacy_fw_cb(const struct firmware *firmware, void *context)
@@ -1534,12 +1531,12 @@ static int do_request_fw(struct b43legacy_wldev *dev,
 		return 0;
 
 	snprintf(path, ARRAY_SIZE(path),
-		 "b43legacy%s/%s.fw",
+		 "/*(DEBLOBBED)*/",
 		 modparam_fwpostfix, name);
 	b43legacyinfo(dev->wl, "Loading firmware %s\n", path);
 	if (async) {
 		init_completion(&dev->fw_load_complete);
-		err = request_firmware_nowait(THIS_MODULE, 1, path,
+		err = reject_firmware_nowait(THIS_MODULE, 1, path,
 					      dev->dev->dev, GFP_KERNEL,
 					      dev, b43legacy_fw_cb);
 		if (err) {
@@ -1552,7 +1549,7 @@ static int do_request_fw(struct b43legacy_wldev *dev,
 			err = -EINVAL;
 		*fw = dev->fwp;
 	} else {
-		err = request_firmware(fw, path, dev->dev->dev);
+		err = reject_firmware(fw, path, dev->dev->dev);
 	}
 	if (err) {
 		b43legacyerr(dev->wl, "Firmware file \"%s\" not found "

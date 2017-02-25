@@ -34,8 +34,8 @@
 #define DOWNLOAD_SIZE		(YMEM0_SIZE - TYPE_A_HEADER_SIZE)
 
 #define FW_DIR			"gdm72xx/"
-#define FW_KRN			"gdmskrn.bin"
-#define FW_RFS			"gdmsrfs.bin"
+#define FW_KRN			"/*(DEBLOBBED)*/"
+#define FW_RFS			"/*(DEBLOBBED)*/"
 
 static u8 *tx_buf;
 
@@ -63,7 +63,7 @@ static int download_image(struct sdio_func *func, const char *img_name)
 	int img_len;
 	const struct firmware *firm;
 
-	ret = request_firmware(&firm, img_name, &func->dev);
+	ret = reject_firmware(&firm, img_name, &func->dev);
 	if (ret < 0) {
 		dev_err(&func->dev,
 			"requesting firmware %s failed with error %d\n",

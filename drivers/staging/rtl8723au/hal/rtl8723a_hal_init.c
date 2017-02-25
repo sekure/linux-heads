@@ -208,22 +208,22 @@ int rtl8723a_FirmwareDownload(struct rtw_adapter *padapter)
 	RT_TRACE(_module_hal_init_c_, _drv_info_, "+%s\n", __func__);
 
 	if (IS_8723A_A_CUT(pHalData->VersionID)) {
-		fw_name = "rtlwifi/rtl8723aufw_A.bin";
+		fw_name = "/*(DEBLOBBED)*/";
 		RT_TRACE(_module_hal_init_c_, _drv_info_,
 			 "rtl8723a_FirmwareDownload: R8723FwImageArray_UMC for RTL8723A A CUT\n");
 	} else if (IS_8723A_B_CUT(pHalData->VersionID)) {
 		/*  WLAN Fw. */
 		if (padapter->registrypriv.wifi_spec == 1) {
-			fw_name = "rtlwifi/rtl8723aufw_B_NoBT.bin";
+			fw_name = "/*(DEBLOBBED)*/";
 			DBG_8723A(" Rtl8723_FwUMCBCutImageArrayWithoutBT for "
 				  "RTL8723A B CUT\n");
 		} else {
 			if (rtl8723a_BT_coexist(padapter)) {
-				fw_name = "rtlwifi/rtl8723aufw_B.bin";
+				fw_name = "/*(DEBLOBBED)*/";
 				DBG_8723A(" Rtl8723_FwUMCBCutImageArrayWithBT "
 					  "for RTL8723A B CUT\n");
 			} else {
-				fw_name = "rtlwifi/rtl8723aufw_B_NoBT.bin";
+				fw_name = "/*(DEBLOBBED)*/";
 				DBG_8723A(" Rtl8723_FwUMCBCutImageArrayWithout "
 					  "BT for RTL8723A B CUT\n");
 			}
@@ -238,7 +238,7 @@ int rtl8723a_FirmwareDownload(struct rtw_adapter *padapter)
 	}
 
 	pr_info("rtl8723au: Loading firmware %s\n", fw_name);
-	if (request_firmware(&fw, fw_name, device)) {
+	if (reject_firmware(&fw, fw_name, device)) {
 		pr_err("rtl8723au: request_firmware load failed\n");
 		rtStatus = _FAIL;
 		goto Exit;

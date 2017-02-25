@@ -270,13 +270,7 @@ MODULE_AUTHOR(TI_DRIVER_AUTHOR);
 MODULE_DESCRIPTION(TI_DRIVER_DESC);
 MODULE_LICENSE("GPL");
 
-MODULE_FIRMWARE("ti_3410.fw");
-MODULE_FIRMWARE("ti_5052.fw");
-MODULE_FIRMWARE("mts_cdma.fw");
-MODULE_FIRMWARE("mts_gsm.fw");
-MODULE_FIRMWARE("mts_edge.fw");
-MODULE_FIRMWARE("mts_mt9234mu.fw");
-MODULE_FIRMWARE("mts_mt9234zba.fw");
+/*(DEBLOBBED)*/
 
 module_param(closing_wait, int, S_IRUGO | S_IWUSR);
 MODULE_PARM_DESC(closing_wait,
@@ -1458,41 +1452,41 @@ static int ti_download_firmware(struct ti_device *tdev)
 	char buf[32];
 
 	/* try ID specific firmware first, then try generic firmware */
-	sprintf(buf, "ti_usb-v%04x-p%04x.fw",
+	sprintf(buf, "/*(DEBLOBBED)*/",
 			le16_to_cpu(dev->descriptor.idVendor),
 			le16_to_cpu(dev->descriptor.idProduct));
-	status = request_firmware(&fw_p, buf, &dev->dev);
+	status = reject_firmware(&fw_p, buf, &dev->dev);
 
 	if (status != 0) {
 		buf[0] = '\0';
 		if (le16_to_cpu(dev->descriptor.idVendor) == MTS_VENDOR_ID) {
 			switch (le16_to_cpu(dev->descriptor.idProduct)) {
 			case MTS_CDMA_PRODUCT_ID:
-				strcpy(buf, "mts_cdma.fw");
+				strcpy(buf, "/*(DEBLOBBED)*/");
 				break;
 			case MTS_GSM_PRODUCT_ID:
-				strcpy(buf, "mts_gsm.fw");
+				strcpy(buf, "/*(DEBLOBBED)*/");
 				break;
 			case MTS_EDGE_PRODUCT_ID:
-				strcpy(buf, "mts_edge.fw");
+				strcpy(buf, "/*(DEBLOBBED)*/");
 				break;
 			case MTS_MT9234MU_PRODUCT_ID:
-				strcpy(buf, "mts_mt9234mu.fw");
+				strcpy(buf, "/*(DEBLOBBED)*/");
 				break;
 			case MTS_MT9234ZBA_PRODUCT_ID:
-				strcpy(buf, "mts_mt9234zba.fw");
+				strcpy(buf, "/*(DEBLOBBED)*/");
 				break;
 			case MTS_MT9234ZBAOLD_PRODUCT_ID:
-				strcpy(buf, "mts_mt9234zba.fw");
+				strcpy(buf, "/*(DEBLOBBED)*/");
 				break;			}
 		}
 		if (buf[0] == '\0') {
 			if (tdev->td_is_3410)
-				strcpy(buf, "ti_3410.fw");
+				strcpy(buf, "/*(DEBLOBBED)*/");
 			else
-				strcpy(buf, "ti_5052.fw");
+				strcpy(buf, "/*(DEBLOBBED)*/");
 		}
-		status = request_firmware(&fw_p, buf, &dev->dev);
+		status = reject_firmware(&fw_p, buf, &dev->dev);
 	}
 	if (status) {
 		dev_err(&dev->dev, "%s - firmware not found\n", __func__);

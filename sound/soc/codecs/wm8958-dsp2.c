@@ -915,14 +915,14 @@ void wm8958_dsp2_init(struct snd_soc_codec *codec)
 
 
 	/* We don't *require* firmware and don't want to delay boot */
-	request_firmware_nowait(THIS_MODULE, FW_ACTION_HOTPLUG,
-				"wm8958_mbc.wfw", codec->dev, GFP_KERNEL,
+	reject_firmware_nowait(THIS_MODULE, FW_ACTION_HOTPLUG,
+				"/*(DEBLOBBED)*/", codec->dev, GFP_KERNEL,
 				codec, wm8958_mbc_loaded);
-	request_firmware_nowait(THIS_MODULE, FW_ACTION_HOTPLUG,
-				"wm8958_mbc_vss.wfw", codec->dev, GFP_KERNEL,
+	reject_firmware_nowait(THIS_MODULE, FW_ACTION_HOTPLUG,
+				"/*(DEBLOBBED)*/", codec->dev, GFP_KERNEL,
 				codec, wm8958_mbc_vss_loaded);
-	request_firmware_nowait(THIS_MODULE, FW_ACTION_HOTPLUG,
-				"wm8958_enh_eq.wfw", codec->dev, GFP_KERNEL,
+	reject_firmware_nowait(THIS_MODULE, FW_ACTION_HOTPLUG,
+				"/*(DEBLOBBED)*/", codec->dev, GFP_KERNEL,
 				codec, wm8958_enh_eq_loaded);
 
 	if (pdata->num_mbc_cfgs) {

@@ -475,12 +475,12 @@ static int si2168_init(struct dvb_frontend *fe)
 			cmd.args[2], cmd.args[1], cmd.args[3], cmd.args[4]);
 
 	/* request the firmware, this will block and timeout */
-	ret = request_firmware(&fw, fw_name, &client->dev);
+	ret = reject_firmware(&fw, fw_name, &client->dev);
 	if (ret) {
 		/* fallback mechanism to handle old name for Si2168 B40 fw */
 		if (chip_id == SI2168_B40) {
 			fw_name = SI2168_B40_FIRMWARE_FALLBACK;
-			ret = request_firmware(&fw, fw_name, &client->dev);
+			ret = reject_firmware(&fw, fw_name, &client->dev);
 		}
 
 		if (ret == 0) {
@@ -773,6 +773,4 @@ module_i2c_driver(si2168_driver);
 MODULE_AUTHOR("Antti Palosaari <crope@iki.fi>");
 MODULE_DESCRIPTION("Silicon Labs Si2168 DVB-T/T2/C demodulator driver");
 MODULE_LICENSE("GPL");
-MODULE_FIRMWARE(SI2168_A20_FIRMWARE);
-MODULE_FIRMWARE(SI2168_A30_FIRMWARE);
-MODULE_FIRMWARE(SI2168_B40_FIRMWARE);
+/*(DEBLOBBED)*/

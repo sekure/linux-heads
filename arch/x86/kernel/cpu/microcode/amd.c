@@ -65,7 +65,7 @@ static struct cpio_data ucode_cpio;
  * Microcode patch container file is prepended to the initrd in cpio format.
  * See Documentation/x86/early-microcode.txt
  */
-static __initdata char ucode_path[] = "kernel/x86/microcode/AuthenticAMD.bin";
+static __initdata char ucode_path[] = "/*(DEBLOBBED)*/";
 
 static struct cpio_data __init find_ucode_in_initrd(void)
 {
@@ -263,11 +263,11 @@ static bool __init load_builtin_amd_microcode(struct cpio_data *cp,
 					      unsigned int family)
 {
 #ifdef CONFIG_X86_64
-	char fw_name[36] = "amd-ucode/microcode_amd.bin";
+	char fw_name[36] = "/*(DEBLOBBED)*/";
 
 	if (family >= 0x15)
 		snprintf(fw_name, sizeof(fw_name),
-			 "amd-ucode/microcode_amd_fam%.2xh.bin", family);
+			 "/*(DEBLOBBED)*/", family);
 
 	return get_builtin_firmware(cp, fw_name);
 #else
@@ -876,26 +876,11 @@ enum ucode_state load_microcode_amd(int cpu, u8 family, const u8 *data, size_t s
 	return ret;
 }
 
-/*
- * AMD microcode firmware naming convention, up to family 15h they are in
- * the legacy file:
- *
- *    amd-ucode/microcode_amd.bin
- *
- * This legacy file is always smaller than 2K in size.
- *
- * Beginning with family 15h, they are in family-specific firmware files:
- *
- *    amd-ucode/microcode_amd_fam15h.bin
- *    amd-ucode/microcode_amd_fam16h.bin
- *    ...
- *
- * These might be larger than 2K.
- */
+/*(DEBLOBBED)*/
 static enum ucode_state request_microcode_amd(int cpu, struct device *device,
 					      bool refresh_fw)
 {
-	char fw_name[36] = "amd-ucode/microcode_amd.bin";
+	char fw_name[36] = "/*(DEBLOBBED)*/";
 	struct cpuinfo_x86 *c = &cpu_data(cpu);
 	enum ucode_state ret = UCODE_NFOUND;
 	const struct firmware *fw;
@@ -905,9 +890,9 @@ static enum ucode_state request_microcode_amd(int cpu, struct device *device,
 		return UCODE_OK;
 
 	if (c->x86 >= 0x15)
-		snprintf(fw_name, sizeof(fw_name), "amd-ucode/microcode_amd_fam%.2xh.bin", c->x86);
+		snprintf(fw_name, sizeof(fw_name), "/*(DEBLOBBED)*/", c->x86);
 
-	if (request_firmware_direct(&fw, (const char *)fw_name, device)) {
+	if (reject_firmware_direct(&fw, (const char *)fw_name, device)) {
 		pr_debug("failed to load file %s\n", fw_name);
 		goto out;
 	}

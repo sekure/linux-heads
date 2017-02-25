@@ -917,7 +917,7 @@ static struct dvb_usb_device_properties megasky_properties = {
 	.caps = DVB_USB_IS_AN_I2C_ADAPTER,
 
 	.usb_ctrl = DEVICE_SPECIFIC,
-	.firmware = "dvb-usb-megasky-02.fw",
+	.firmware = "/*(DEBLOBBED)*/",
 	.download_firmware = m920x_firmware_download,
 
 	.rc.legacy = {
@@ -972,7 +972,7 @@ static struct dvb_usb_device_properties digivox_mini_ii_properties = {
 	.caps = DVB_USB_IS_AN_I2C_ADAPTER,
 
 	.usb_ctrl = DEVICE_SPECIFIC,
-	.firmware = "dvb-usb-digivox-02.fw",
+	.firmware = "/*(DEBLOBBED)*/",
 	.download_firmware = m920x_firmware_download,
 
 	.size_of_priv     = sizeof(struct m920x_state),
@@ -1028,7 +1028,7 @@ static struct dvb_usb_device_properties tvwalkertwin_properties = {
 	.caps = DVB_USB_IS_AN_I2C_ADAPTER,
 
 	.usb_ctrl = DEVICE_SPECIFIC,
-	.firmware = "dvb-usb-tvwalkert.fw",
+	.firmware = "/*(DEBLOBBED)*/",
 	.download_firmware = m920x_firmware_download,
 
 	.rc.legacy = {
@@ -1107,7 +1107,7 @@ static struct dvb_usb_device_properties dposh_properties = {
 	.caps = DVB_USB_IS_AN_I2C_ADAPTER,
 
 	.usb_ctrl = DEVICE_SPECIFIC,
-	.firmware = "dvb-usb-dposh-01.fw",
+	.firmware = "/*(DEBLOBBED)*/",
 	.download_firmware = m920x_firmware_download,
 
 	.size_of_priv     = sizeof(struct m920x_state),
@@ -1205,7 +1205,7 @@ static struct dvb_usb_device_properties vp7049_properties = {
 	.caps = DVB_USB_IS_AN_I2C_ADAPTER,
 
 	.usb_ctrl = DEVICE_SPECIFIC,
-	.firmware = "dvb-usb-vp7049-0.95.fw",
+	.firmware = "/*(DEBLOBBED)*/",
 	.download_firmware = m920x_firmware_download,
 
 	.rc.core = {

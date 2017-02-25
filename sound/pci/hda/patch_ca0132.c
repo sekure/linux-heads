@@ -70,10 +70,10 @@
 #define SCP_SET    0
 #define SCP_GET    1
 
-#define EFX_FILE   "ctefx.bin"
+#define EFX_FILE   "/*(DEBLOBBED)*/"
 
 #ifdef CONFIG_SND_HDA_CODEC_CA0132_DSP
-MODULE_FIRMWARE(EFX_FILE);
+/*(DEBLOBBED)*/
 #endif
 
 static char *dirstr[2] = { "Playback", "Capture" };
@@ -4372,7 +4372,7 @@ static bool ca0132_download_dsp_images(struct hda_codec *codec)
 	const struct dsp_image_seg *dsp_os_image;
 	const struct firmware *fw_entry;
 
-	if (request_firmware(&fw_entry, EFX_FILE, codec->card->dev) != 0)
+	if (reject_firmware(&fw_entry, EFX_FILE, codec->card->dev) != 0)
 		return false;
 
 	dsp_os_image = (struct dsp_image_seg *)(fw_entry->data);

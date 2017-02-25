@@ -683,7 +683,7 @@ static int m88ds3103_init(struct dvb_frontend *fe)
 	else
 		fw_file = M88DS3103_FIRMWARE;
 	/* request the firmware, this will block and timeout */
-	ret = request_firmware(&fw, fw_file, &client->dev);
+	ret = reject_firmware(&fw, fw_file, &client->dev);
 	if (ret) {
 		dev_err(&client->dev, "firmare file '%s' not found\n", fw_file);
 		goto err;
@@ -1529,5 +1529,4 @@ module_i2c_driver(m88ds3103_driver);
 MODULE_AUTHOR("Antti Palosaari <crope@iki.fi>");
 MODULE_DESCRIPTION("Montage Technology M88DS3103 DVB-S/S2 demodulator driver");
 MODULE_LICENSE("GPL");
-MODULE_FIRMWARE(M88DS3103_FIRMWARE);
-MODULE_FIRMWARE(M88RS6000_FIRMWARE);
+/*(DEBLOBBED)*/

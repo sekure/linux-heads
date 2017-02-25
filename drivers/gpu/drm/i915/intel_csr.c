@@ -41,11 +41,10 @@
  * be moved to FW_FAILED.
  */
 
-#define I915_CSR_SKL "i915/skl_dmc_ver1.bin"
-#define I915_CSR_BXT "i915/bxt_dmc_ver1.bin"
+#define I915_CSR_SKL "/*(DEBLOBBED)*/"
+#define I915_CSR_BXT "/*(DEBLOBBED)*/"
 
-MODULE_FIRMWARE(I915_CSR_SKL);
-MODULE_FIRMWARE(I915_CSR_BXT);
+/*(DEBLOBBED)*/
 
 /*
 * SKL CSR registers for DC5 and DC6
@@ -448,7 +447,7 @@ void intel_csr_ucode_init(struct drm_device *dev)
 	intel_runtime_pm_get(dev_priv);
 
 	/* CSR supported for platform, load firmware */
-	ret = request_firmware_nowait(THIS_MODULE, true, csr->fw_path,
+	ret = reject_firmware_nowait(THIS_MODULE, true, csr->fw_path,
 				&dev_priv->dev->pdev->dev,
 				GFP_KERNEL, dev_priv,
 				finish_csr_load);

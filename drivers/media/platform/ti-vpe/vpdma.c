@@ -26,7 +26,7 @@
 #include "vpdma.h"
 #include "vpdma_priv.h"
 
-#define VPDMA_FIRMWARE	"vpdma-1b8.bin"
+#define VPDMA_FIRMWARE	"/*(DEBLOBBED)*/"
 
 const struct vpdma_data_format vpdma_yuv_fmts[] = {
 	[VPDMA_DATA_FMT_Y444] = {
@@ -858,7 +858,7 @@ static int vpdma_load_firmware(struct vpdma_data *vpdma)
 	int r;
 	struct device *dev = &vpdma->pdev->dev;
 
-	r = request_firmware_nowait(THIS_MODULE, 1,
+	r = reject_firmware_nowait(THIS_MODULE, 1,
 		(const char *) VPDMA_FIRMWARE, dev, GFP_KERNEL, vpdma,
 		vpdma_firmware_cb);
 	if (r) {
@@ -909,4 +909,4 @@ struct vpdma_data *vpdma_create(struct platform_device *pdev,
 
 	return vpdma;
 }
-MODULE_FIRMWARE(VPDMA_FIRMWARE);
+/*(DEBLOBBED)*/

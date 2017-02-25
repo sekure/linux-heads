@@ -728,10 +728,10 @@ static int intel_setup(struct hci_uart *hu)
 	 * Currently this bootloader support is limited to hardware variant
 	 * iBT 3.0 (LnP/SfP) which is identified by the value 11 (0x0b).
 	 */
-	snprintf(fwname, sizeof(fwname), "intel/ibt-11-%u.sfi",
+	snprintf(fwname, sizeof(fwname), "/*(DEBLOBBED)*/",
 		 le16_to_cpu(params->dev_revid));
 
-	err = request_firmware(&fw, fwname, &hdev->dev);
+	err = reject_firmware(&fw, fwname, &hdev->dev);
 	if (err < 0) {
 		bt_dev_err(hdev, "Failed to load Intel firmware file (%d)",
 			   err);

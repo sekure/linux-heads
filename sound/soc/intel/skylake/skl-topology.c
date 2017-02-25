@@ -1227,10 +1227,10 @@ int skl_tplg_init(struct snd_soc_platform *platform, struct hdac_ext_bus *ebus)
 	struct hdac_bus *bus = ebus_to_hbus(ebus);
 	struct skl *skl = ebus_to_skl(ebus);
 
-	ret = request_firmware(&fw, "dfw_sst.bin", bus->dev);
+	ret = reject_firmware(&fw, "/*(DEBLOBBED)*/", bus->dev);
 	if (ret < 0) {
 		dev_err(bus->dev, "tplg fw %s load failed with %d\n",
-				"dfw_sst.bin", ret);
+				"/*(DEBLOBBED)*/", ret);
 		return ret;
 	}
 

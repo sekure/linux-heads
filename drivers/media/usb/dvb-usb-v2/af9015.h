@@ -36,7 +36,7 @@
 #include "tda18218.h"
 #include "mxl5007t.h"
 
-#define AF9015_FIRMWARE "dvb-usb-af9015.fw"
+#define AF9015_FIRMWARE "/*(DEBLOBBED)*/"
 
 /* Windows driver uses packet count 21 for USB1.1 and 348 for USB2.0.
    We use smaller - about 1/4 from the original, 5 and 87. */

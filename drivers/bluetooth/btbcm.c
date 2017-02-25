@@ -316,7 +316,7 @@ int btbcm_initialize(struct hci_dev *hdev, char *fw_name, size_t len)
 			}
 		}
 
-		snprintf(fw_name, len, "brcm/%s.hcd", hw_name ? : "BCM");
+		snprintf(fw_name, len, "/*(DEBLOBBED)*/", hw_name ? : "BCM");
 		break;
 	default:
 		return 0;
@@ -432,7 +432,7 @@ int btbcm_setup_patchram(struct hci_dev *hdev)
 			}
 		}
 
-		snprintf(fw_name, sizeof(fw_name), "brcm/%s.hcd",
+		snprintf(fw_name, sizeof(fw_name), "/*(DEBLOBBED)*/",
 			 hw_name ? : "BCM");
 		break;
 	case 1:
@@ -453,7 +453,7 @@ int btbcm_setup_patchram(struct hci_dev *hdev)
 			}
 		}
 
-		snprintf(fw_name, sizeof(fw_name), "brcm/%s-%4.4x-%4.4x.hcd",
+		snprintf(fw_name, sizeof(fw_name), "/*(DEBLOBBED)*/",
 			 hw_name ? : "BCM", vid, pid);
 		break;
 	default:
@@ -464,7 +464,7 @@ int btbcm_setup_patchram(struct hci_dev *hdev)
 		hw_name ? : "BCM", (subver & 0xe000) >> 13,
 		(subver & 0x1f00) >> 8, (subver & 0x00ff), rev & 0x0fff);
 
-	err = request_firmware(&fw, fw_name, &hdev->dev);
+	err = reject_firmware(&fw, fw_name, &hdev->dev);
 	if (err < 0) {
 		BT_INFO("%s: BCM: Patch %s not found", hdev->name, fw_name);
 		return 0;

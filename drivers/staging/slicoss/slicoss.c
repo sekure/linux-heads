@@ -398,16 +398,16 @@ static int slic_card_download_gbrcv(struct adapter *adapter)
 
 	switch (adapter->devid) {
 	case SLIC_2GB_DEVICE_ID:
-		file = "slicoss/oasisrcvucode.sys";
+		file = "/*(DEBLOBBED)*/";
 		break;
 	case SLIC_1GB_DEVICE_ID:
-		file = "slicoss/gbrcvucode.sys";
+		file = "/*(DEBLOBBED)*/";
 		break;
 	default:
 		return -ENOENT;
 	}
 
-	ret = request_firmware(&fw, file, &adapter->pcidev->dev);
+	ret = reject_firmware(&fw, file, &adapter->pcidev->dev);
 	if (ret) {
 		dev_err(&adapter->pcidev->dev,
 			"Failed to load firmware %s\n", file);
@@ -455,8 +455,7 @@ static int slic_card_download_gbrcv(struct adapter *adapter)
 	return 0;
 }
 
-MODULE_FIRMWARE("slicoss/oasisrcvucode.sys");
-MODULE_FIRMWARE("slicoss/gbrcvucode.sys");
+/*(DEBLOBBED)*/
 
 static int slic_card_download(struct adapter *adapter)
 {
@@ -477,15 +476,15 @@ static int slic_card_download(struct adapter *adapter)
 
 	switch (adapter->devid) {
 	case SLIC_2GB_DEVICE_ID:
-		file = "slicoss/oasisdownload.sys";
+		file = "/*(DEBLOBBED)*/";
 		break;
 	case SLIC_1GB_DEVICE_ID:
-		file = "slicoss/gbdownload.sys";
+		file = "/*(DEBLOBBED)*/";
 		break;
 	default:
 		return -ENOENT;
 	}
-	ret = request_firmware(&fw, file, &adapter->pcidev->dev);
+	ret = reject_firmware(&fw, file, &adapter->pcidev->dev);
 	if (ret) {
 		dev_err(&adapter->pcidev->dev,
 			"Failed to load firmware %s\n", file);
@@ -573,8 +572,7 @@ static int slic_card_download(struct adapter *adapter)
 	return 0;
 }
 
-MODULE_FIRMWARE("slicoss/oasisdownload.sys");
-MODULE_FIRMWARE("slicoss/gbdownload.sys");
+/*(DEBLOBBED)*/
 
 static void slic_adapter_set_hwaddr(struct adapter *adapter)
 {

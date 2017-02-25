@@ -19,8 +19,7 @@
 #include "wil6210.h"
 #include "fw.h"
 
-MODULE_FIRMWARE(WIL_FW_NAME);
-MODULE_FIRMWARE(WIL_FW2_NAME);
+/*(DEBLOBBED)*/
 
 static
 void wil_memset_toio_32(volatile void __iomem *dst, u32 val,

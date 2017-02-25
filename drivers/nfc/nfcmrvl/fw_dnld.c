@@ -511,7 +511,7 @@ int nfcmrvl_fw_dnld_start(struct nci_dev *ndev, const char *firmware_name)
 	 */
 
 	/* Retrieve FW binary */
-	if (request_firmware(&fw_dnld->fw, firmware_name, priv->dev) < 0) {
+	if (reject_firmware(&fw_dnld->fw, firmware_name, priv->dev) < 0) {
 		nfc_err(priv->dev, "failed to retrieve FW %s", firmware_name);
 		return -ENOENT;
 	}

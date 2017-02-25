@@ -16,8 +16,8 @@
 #include "xhci.h"
 #include "xhci-rcar.h"
 
-#define FIRMWARE_NAME		"r8a779x_usb3_v1.dlmem"
-MODULE_FIRMWARE(FIRMWARE_NAME);
+#define FIRMWARE_NAME		"/*(DEBLOBBED)*/"
+/*(DEBLOBBED)*/
 
 /*** Register Offset ***/
 #define RCAR_USB3_INT_ENA	0x224	/* Interrupt Enable */
@@ -85,7 +85,7 @@ static int xhci_rcar_download_firmware(struct device *dev, void __iomem *regs)
 	u32 data, val, temp;
 
 	/* request R-Car USB3.0 firmware */
-	retval = request_firmware(&fw, FIRMWARE_NAME, dev);
+	retval = reject_firmware(&fw, FIRMWARE_NAME, dev);
 	if (retval)
 		return retval;
 

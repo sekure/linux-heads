@@ -424,6 +424,6 @@ module_exit(adfdrv_release);
 
 MODULE_LICENSE("Dual BSD/GPL");
 MODULE_AUTHOR("Intel");
-MODULE_FIRMWARE(ADF_DH895XCC_FW);
+/*(DEBLOBBED)*/
 MODULE_DESCRIPTION("Intel(R) QuickAssist Technology");
 MODULE_VERSION(ADF_DRV_VERSION);

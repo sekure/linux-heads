@@ -31,7 +31,7 @@
 
 #define MAX_IMG_CNT		16
 #define FW_DIR			"gdm72xx/"
-#define FW_UIMG			"gdmuimg.bin"
+#define FW_UIMG			"/*(DEBLOBBED)*/"
 #define FW_KERN			"zImage"
 #define FW_FS			"ramdisk.jffs2"
 
@@ -150,7 +150,7 @@ int usb_boot(struct usb_device *usbdev, u16 pid)
 	char *img_name = FW_DIR FW_UIMG;
 	const struct firmware *firm;
 
-	ret = request_firmware(&firm, img_name, &usbdev->dev);
+	ret = reject_firmware(&firm, img_name, &usbdev->dev);
 	if (ret < 0) {
 		dev_err(&usbdev->dev,
 			"requesting firmware %s failed with error %d\n",
@@ -278,7 +278,7 @@ static int em_download_image(struct usb_device *usbdev, const char *img_name,
 	const int pad_size = 0;
 	#endif
 
-	ret = request_firmware(&firm, img_name, &usbdev->dev);
+	ret = reject_firmware(&firm, img_name, &usbdev->dev);
 	if (ret < 0) {
 		dev_err(&usbdev->dev,
 			"requesting firmware %s failed with error %d\n",

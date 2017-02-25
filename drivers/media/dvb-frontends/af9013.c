@@ -1375,7 +1375,7 @@ static int af9013_download_firmware(struct af9013_state *state)
 			KBUILD_MODNAME, af9013_ops.info.name);
 
 	/* request the firmware, this will block and timeout */
-	ret = request_firmware(&fw, fw_file, state->i2c->dev.parent);
+	ret = reject_firmware(&fw, fw_file, state->i2c->dev.parent);
 	if (ret) {
 		dev_info(&state->i2c->dev, "%s: did not find the firmware " \
 			"file. (%s) Please see linux/Documentation/dvb/ for " \
@@ -1558,4 +1558,4 @@ static struct dvb_frontend_ops af9013_ops = {
 MODULE_AUTHOR("Antti Palosaari <crope@iki.fi>");
 MODULE_DESCRIPTION("Afatech AF9013 DVB-T demodulator driver");
 MODULE_LICENSE("GPL");
-MODULE_FIRMWARE(AF9013_FIRMWARE);
+/*(DEBLOBBED)*/

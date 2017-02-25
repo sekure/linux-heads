@@ -42,7 +42,7 @@
 static void gmc_v8_0_set_gart_funcs(struct amdgpu_device *adev);
 static void gmc_v8_0_set_irq_funcs(struct amdgpu_device *adev);
 
-MODULE_FIRMWARE("amdgpu/tonga_mc.bin");
+/*(DEBLOBBED)*/
 
 static const u32 golden_settings_tonga_a11[] =
 {
@@ -216,8 +216,8 @@ static int gmc_v8_0_init_microcode(struct amdgpu_device *adev)
 	default: BUG();
 	}
 
-	snprintf(fw_name, sizeof(fw_name), "amdgpu/%s_mc.bin", chip_name);
-	err = request_firmware(&adev->mc.fw, fw_name, adev->dev);
+	snprintf(fw_name, sizeof(fw_name), "/*(DEBLOBBED)*/", chip_name);
+	err = reject_firmware(&adev->mc.fw, fw_name, adev->dev);
 	if (err)
 		goto out;
 	err = amdgpu_ucode_validate(adev->mc.fw);

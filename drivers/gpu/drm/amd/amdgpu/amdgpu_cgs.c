@@ -701,14 +701,14 @@ static int amdgpu_cgs_get_firmware_info(void *cgs_device,
 
 		switch (adev->asic_type) {
 		case CHIP_TONGA:
-			strcpy(fw_name, "amdgpu/tonga_smc.bin");
+			strcpy(fw_name, "/*(DEBLOBBED)*/");
 			break;
 		default:
 			DRM_ERROR("SMC firmware not supported\n");
 			return -EINVAL;
 		}
 
-		err = request_firmware(&adev->pm.fw, fw_name, adev->dev);
+		err = reject_firmware(&adev->pm.fw, fw_name, adev->dev);
 		if (err) {
 			DRM_ERROR("Failed to request firmware\n");
 			return err;

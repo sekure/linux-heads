@@ -262,10 +262,10 @@ static int btrtl_setup_rtl8723a(struct hci_dev *hdev)
 	const struct firmware *fw;
 	int ret;
 
-	BT_INFO("%s: rtl: loading rtl_bt/rtl8723a_fw.bin", hdev->name);
-	ret = request_firmware(&fw, "rtl_bt/rtl8723a_fw.bin", &hdev->dev);
+	BT_INFO("%s: rtl: loading /*(DEBLOBBED)*/", hdev->name);
+	ret = reject_firmware(&fw, "/*(DEBLOBBED)*/", &hdev->dev);
 	if (ret < 0) {
-		BT_ERR("%s: Failed to load rtl_bt/rtl8723a_fw.bin", hdev->name);
+		BT_ERR("%s: Failed to load /*(DEBLOBBED)*/", hdev->name);
 		return ret;
 	}
 
@@ -298,7 +298,7 @@ static int btrtl_setup_rtl8723b(struct hci_dev *hdev, u16 lmp_subver,
 	int ret;
 
 	BT_INFO("%s: rtl: loading %s", hdev->name, fw_name);
-	ret = request_firmware(&fw, fw_name, &hdev->dev);
+	ret = reject_firmware(&fw, fw_name, &hdev->dev);
 	if (ret < 0) {
 		BT_ERR("%s: Failed to load %s", hdev->name, fw_name);
 		return ret;
@@ -370,13 +370,13 @@ int btrtl_setup_realtek(struct hci_dev *hdev)
 		return btrtl_setup_rtl8723a(hdev);
 	case RTL_ROM_LMP_8723B:
 		return btrtl_setup_rtl8723b(hdev, lmp_subver,
-					    "rtl_bt/rtl8723b_fw.bin");
+					    "/*(DEBLOBBED)*/");
 	case RTL_ROM_LMP_8821A:
 		return btrtl_setup_rtl8723b(hdev, lmp_subver,
-					    "rtl_bt/rtl8821a_fw.bin");
+					    "/*(DEBLOBBED)*/");
 	case RTL_ROM_LMP_8761A:
 		return btrtl_setup_rtl8723b(hdev, lmp_subver,
-					    "rtl_bt/rtl8761a_fw.bin");
+					    "/*(DEBLOBBED)*/");
 	default:
 		BT_INFO("rtl: assuming no firmware upload needed.");
 		return 0;

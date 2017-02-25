@@ -184,7 +184,7 @@ static int nfcwilink_get_bts_file_name(struct nfcwilink *drv, char *file_name)
 	}
 
 	snprintf(file_name, BTS_FILE_NAME_MAX_SIZE,
-			"TINfcInit_%d.%d.%d.%d.bts",
+			"/*(DEBLOBBED)*/",
 			drv->nfcc_info.hw_id,
 			drv->nfcc_info.sw_ver_x,
 			drv->nfcc_info.sw_ver_z,
@@ -256,7 +256,7 @@ static int nfcwilink_download_fw(struct nfcwilink *drv)
 	if (rc)
 		goto exit;
 
-	rc = request_firmware(&fw, file_name, &drv->pdev->dev);
+	rc = reject_firmware(&fw, file_name, &drv->pdev->dev);
 	if (rc) {
 		nfc_err(&drv->pdev->dev, "request_firmware failed %d\n", rc);
 
