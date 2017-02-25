@@ -494,7 +494,7 @@ ssize_t __vfs_write(struct file *file, const char __user *p, size_t count,
 }
 EXPORT_SYMBOL(__vfs_write);
 
-vfs_readf_t vfs_read(struct file *file)
+/* vfs_readf_t vfs_read(struct file *file)
 {
 	const struct file_operations *fop = file->f_op;
 
@@ -504,6 +504,7 @@ vfs_readf_t vfs_read(struct file *file)
 		return new_sync_read;
 	return ERR_PTR(-ENOSYS);
 }
+*/
 
 vfs_writef_t vfs_writef(struct file *file)
 {
