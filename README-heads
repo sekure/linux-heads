@@ -1,4 +1,0 @@
-current git master is kernel 4.4.45
-	* patched with grsecurity
-	* patched with aufs4
-	* deblobbed with linux-libre
